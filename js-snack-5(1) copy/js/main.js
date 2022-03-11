@@ -1,43 +1,104 @@
+
 /**
-    Creare un oggetto che rappresenti un giocatore di basket, con le seguenti proprietà:
-    Codice giocatore, Nome, Cognome, Età,  Media punti fatti per partita, Percentuale di successo per tiri da 3 punti
+ *
+ *
+    Crea un array composto da 12 automobili.
+    Ogni oggetto automobile avrà le seguenti proprietà: marca, modello e alimentazione (benzina, diesel, gpl, elettrico, metano).
 
-    Generare casualmente le statistiche di gioco, secondo queste regole:
+    Dividi le automobili in 3 array separati: nel primo array solo le auto a benzina, nel secondo solo le auto a diesel, nel terzo il resto delle auto.
 
-    A - il codice giocatore deve essere formato da 3 lettere maiuscole casuali e 3 cifre casuali
+    Infine stampa separatamente i 3 array.
 
-    B - la media punti fatti per partita deve essere compresa tra 0 e 50
-    
-    C - la percentuale di successo per da 3 punti deve essere compresa tra 0 e 100
+ *
  */
 
-const player = {
-    id : generatePlayerId(),
-    nome : 'Stephen',
-    cognome : 'Curry',
-    Età : 30,
-    mediaPunti : generaMedia(),
-    trePunti :generaTrePunti(),
-};
+const cars = [
+    {
+        marca : 'Tesla',
+        modello : 'model S',
+        alimentazione : 'elettrico',
+    },
+    {
+        marca : 'Ferrari',
+        modello : 'LaFerrari',
+        alimentazione : 'benzina',
+    },
+    {
+        marca : 'BMW',
+        modello : 'i8',
+        alimentazione : 'elettrico',
+    },
+    {
+        marca : 'Maserati',
+        modello : 'bello',
+        alimentazione : 'diesel',
+    },
+    {
+        marca : 'Renault',
+        modello : 'Clio',
+        alimentazione : 'gpl',
+    },
+    {
+        marca : 'Toyota',
+        modello : 'Yaris',
+        alimentazione : 'metano',
+    },
+    {
+        marca : 'Renault',
+        modello : 'Zoe',
+        alimentazione : 'elettrico',
+    },
+    {
+        marca : 'Bugatti',
+        modello : 'Chiron',
+        alimentazione : 'benzina',
+    },
+    {
+        marca : 'Audi',
+        modello : 'R8',
+        alimentazione : 'benzina',
+    },
+    {
+        marca : 'Aston Martin',
+        modello : 'levigada',
+        alimentazione : 'diesel',
+    },
+    {
+        marca : 'Mclaren',
+        modello : '1080p',
+        alimentazione : 'diesel',
+    },
+    {
+        marca : 'Lamborghini',
+        modello : 'Murcielago',
+        alimentazione : 'benzina',
+    },
+];
 
-function generatePlayerId(){
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    const numbers ='0123456789';
-    let randomId = '';
-    for(let i=0;i<3;i++){
-        const randomCharacter = alphabet[Math.floor(Math.random() * alphabet.length)];
-        randomId += randomCharacter.toLocaleUpperCase();
+const benzinaCars = cars.filter((element) =>{
+    if(element.alimentazione == 'benzina'){
+        return true;
+    }else{
+        return false;
     }
-    for(let i=0;i<3;i++){
-        const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-        randomId += randomNumber;
+});
+
+const dieselCars = cars.filter((element) =>{
+    if(element.alimentazione == 'diesel'){
+        return true;
+    }else{
+        return false;
     }
-    return randomId;
-}
+});
 
-function randomNumber(spectrum,start){
-    return [Math.floor(Math.random() * spectrum)+start];
-}
+const otherCars = cars.filter((element) =>{
+    if(element.alimentazione != 'benzina' && element.alimentazione != 'diesel'){
+        return true;
+    }else{
+        return false;
+    }
+});
 
-
-console.log(player);
+console.table(benzinaCars);
+console.table(dieselCars);
+console.table(otherCars);
