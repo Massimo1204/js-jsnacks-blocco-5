@@ -12,12 +12,12 @@
  */
 
 const player = {
-    id : generatePlayerId(),
+    id : '',
     nome : 'Stephen',
     cognome : 'Curry',
     Età : 30,
-    mediaPunti : generaMedia(),
-    trePunti :generaTrePunti(),
+    mediaPunti : '',
+    trePunti : '',
 };
 
 function generatePlayerId(){
@@ -39,5 +39,8 @@ function randomNumber(spectrum,start){
     return [Math.floor(Math.random() * spectrum)+start];
 }
 
+player.id = generatePlayerId();
+player.mediaPunti =  randomNumber(50,1);
+player.trePunti = randomNumber(100,1);
 
-console.log(player);
+console.table(player);
